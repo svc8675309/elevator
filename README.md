@@ -28,19 +28,19 @@
 1. This algorithm is not fair because it causes a long waiting time for passengers that just missed the elevator.
 ## Considerations for optimization:
 ### Prioritization:
-   Closest first: While traveling in a direction, prioritize requests closer to the elevator's current position to minimize travel time.
+*  Closest first: While traveling in a direction, prioritize requests closer to the elevator's current position to minimize travel time.
    ```
    Example: If 10 people were going up to floor 3 and 1 person was going up to
    floor 2, go to floor 3 first then back down to floor 2.
    ```
 ### Load capacity:
-   The system should also consider the elevator's weight capacity to avoid exceeding it.
+* The system should also consider the elevator's weight capacity to avoid exceeding it.
 ### Group control:
-   In buildings with multiple elevators, a group control system can coordinate elevator movements to efficiently distribute passenger traffic.
+* In buildings with multiple elevators, a group control system can coordinate elevator movements to efficiently distribute passenger traffic.
 ### Destination dispatch:
-   Advanced systems can allow passengers to pre-select their destination floor, enabling the elevator to prioritize requests based on the final destination. 
+* Advanced systems can allow passengers to pre-select their destination floor, enabling the elevator to prioritize requests based on the final destination. 
 ### Fire and Alarm:
-   Force elevator to stop on a fire event to let people off. 
+* Force elevator to stop on a fire event to let people off. 
 
 ## *Build and run*
 ```
