@@ -1,7 +1,13 @@
 # Elevator Coding Challenge
+*  Scott Van Camp
+
+## Build and run
+```
+mvn clean install
+```
+Note unit test output for [ElevatorTest](https://github.com/svc8675309/elevator/blob/main/src/test/java/com/svc/elevator/ElevatorTest.java)
 
 ## SCAN ( Disk Scheduling Algorithms ) - But for Elevators
-*  Ref: Google AI + My own thoughts ( Scott Van Camp )
 
 ## Key Concepts
 ### Store requests:
