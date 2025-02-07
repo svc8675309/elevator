@@ -1,4 +1,4 @@
-# Elevator 
+# Elevator Coding Challenge
 
 ## SCAN ( Disk Scheduling Algorithms ) - But for Elevators
 *  Ref: Google AI + My own thoughts ( Scott Van Camp )
@@ -38,3 +38,5 @@
    In buildings with multiple elevators, a group control system can coordinate elevator movements to efficiently distribute passenger traffic.
 ### Destination dispatch:
    Advanced systems can allow passengers to pre-select their destination floor, enabling the elevator to prioritize requests based on the final destination. 
+### Fire and Alarm:
+   Force elevator to stop on a fire event to let people off. 

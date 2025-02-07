@@ -31,9 +31,12 @@ public class ElevatorTest {
     CountDownLatch idleLatch = new CountDownLatch(1);
     elevatorController.startElevator(idleLatch);
     try {
-      List<Person> people = generatePeople(elevatorController.getElevator(), 100);
-      elevatorController.submitPeople(people);
-      idleLatch.await(10 * 1000, TimeUnit.SECONDS);
+      // Everyone is waiting
+      elevatorController.submitPeople(generatePeople(elevatorController.getElevator(), 100));
+      Thread.sleep(500);
+      elevatorController.submitPeople(generatePeople(elevatorController.getElevator(), 20));
+      // Wait ( in real life there would be no countdown latch )
+      idleLatch.await(1000 * 60, TimeUnit.SECONDS);
     } finally {
       elevatorController.stopElevator();
     }
