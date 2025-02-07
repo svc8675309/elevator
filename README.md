@@ -1,9 +1,10 @@
-# Elevator Coding Challenge
+# *Elevator Coding Challenge*
 *  Scott Van Camp
+*  [Apache License 2.0](https://github.com/googleapis/googleapis/blob/master/LICENSE)
 
 ## SCAN ( Disk Scheduling Algorithms ) - But for Elevators
 
-## Key Concepts</span>
+## Key Concepts
 ### Store requests:
 1. The elevator system keeps track of all floor requests, noting whether passengers want to go up or down.
 ### Direction selection:
@@ -41,7 +42,7 @@
 ### Fire and Alarm:
    Force elevator to stop on a fire event to let people off. 
 
-## Build and run
+## *Build and run*
 ```
 mvn clean install
 ```
