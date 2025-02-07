@@ -22,7 +22,7 @@
    When the elevator reaches the last request in the current direction, change direction and start servicing requests in the opposite direction.
 ## Advantages
 1. No starvation.
-2. Efficiently moves from idle to handle the most people waiting 
+2. Efficiently moves from idle to handle the most people waiting. 
 ## Disadvantages
 1. This algorithm is not fair because it causes a long waiting time for passengers that just missed the elevator.
 ## Considerations for optimization:
