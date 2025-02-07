@@ -1,15 +1,9 @@
 # Elevator Coding Challenge
 *  Scott Van Camp
 
-## Build and run
-```
-mvn clean install
-```
-Note unit test output for [ElevatorTest](https://github.com/svc8675309/elevator/blob/main/src/test/java/com/svc/elevator/ElevatorTest.java)
-
 ## SCAN ( Disk Scheduling Algorithms ) - But for Elevators
 
-## Key Concepts
+## Key Concepts</span>
 ### Store requests:
 1. The elevator system keeps track of all floor requests, noting whether passengers want to go up or down.
 ### Direction selection:
@@ -46,3 +40,9 @@ Note unit test output for [ElevatorTest](https://github.com/svc8675309/elevator/
    Advanced systems can allow passengers to pre-select their destination floor, enabling the elevator to prioritize requests based on the final destination. 
 ### Fire and Alarm:
    Force elevator to stop on a fire event to let people off. 
+
+## Build and run
+```
+mvn clean install
+```
+Note unit test output for [ElevatorTest](https://github.com/svc8675309/elevator/blob/main/src/test/java/com/svc/elevator/ElevatorTest.java)
