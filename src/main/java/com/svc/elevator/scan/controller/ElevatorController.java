@@ -118,6 +118,14 @@ public class ElevatorController {
       .mapToLong(List::size).sum();
     long waitingToGoDown = waitingDown.values().stream()
       .mapToLong(List::size).sum();
+
+    long waitingToLeaveUp = waitingToGetOff.values().stream()
+      .flatMap(List::stream).filter(p -> p.getOutsideElevatorRequest().getDesiredDirection().equals(PersonDirection.UP))
+      .count();
+    long waitingToLeaveDown = waitingToGetOff.values().stream()
+      .flatMap(List::stream).filter(p -> p.getOutsideElevatorRequest().getDesiredDirection().equals(PersonDirection.DOWN))
+      .count();
+
     long waitingToLeave = waitingToGetOff.values().stream()
       .mapToLong(List::size).sum();
     if (waitingToGoUp == 0 && waitingToGoDown == 0 && waitingToLeave == 0) {
@@ -129,7 +137,8 @@ public class ElevatorController {
     } else {
       int elevatorCurrentFloor = elevator.getCurrentFloor().get();
       if (elevator.getDirection().equals(ElevatorDirection.UP)) {
-        if (elevatorCurrentFloor == elevator.getMaxFloor()) {
+        // Stop going up if there are no more up requests or the top most floor has been reached
+        if (elevatorCurrentFloor == elevator.getMaxFloor() || (waitingToGoUp == 0 && waitingToLeaveUp == 0)) {
           // Switch directions
           elevator.setDirection(ElevatorDirection.DOWN);
           // In this case process floor
@@ -141,7 +150,8 @@ public class ElevatorController {
           log.info(elevator.toString());
         }
       } else if (elevator.getDirection().equals(ElevatorDirection.DOWN)) {
-        if (elevatorCurrentFloor == elevator.getMinFloor()) {
+        // Stop going down if there are no more down requests or the bottom most floor has been reached
+        if (elevatorCurrentFloor == elevator.getMinFloor() || (waitingToGoDown == 0 && waitingToLeaveDown == 0)) {
           // Switch directions
           elevator.setDirection(ElevatorDirection.UP);
           // In this case process floor
@@ -163,7 +173,10 @@ public class ElevatorController {
     int elevatorCurrentFloor = elevator.getCurrentFloor().get();
     // Process the people getting off the elevator first
     List<Person> leaving = waitingToGetOff.getOrDefault(elevatorCurrentFloor, Collections.emptyList());
-    leaving.forEach(p -> log.info("{} is getting off on floor {}", p.getName(), elevatorCurrentFloor));
+    leaving.forEach(p -> {
+      log.info("{} is getting off on floor {}", p.getName(), elevatorCurrentFloor);
+      p.getExitedElevator().set(true);
+    });
     // Bye Bye
     leaving.clear();
 
@@ -175,8 +188,11 @@ public class ElevatorController {
       entering = waitingDown.getOrDefault(elevatorCurrentFloor, Collections.emptyList());
     }
 
-    entering.forEach(p -> log.info("On the floor {} to floor {} {} is getting on going {}.",
-      elevatorCurrentFloor, p.getInsideElevatorRequest().getDestinationFloor(), p.getName(), p.getOutsideElevatorRequest().getDesiredDirection()));
+    entering.forEach(p -> {
+      log.info("On the floor {} to floor {} {} is getting on going {}.",
+        elevatorCurrentFloor, p.getInsideElevatorRequest().getDestinationFloor(), p.getName(), p.getOutsideElevatorRequest().getDesiredDirection());
+      p.getBoardedElevator().set(true);
+    });
 
     // Add them to the waiting to get off group
     entering.forEach(p -> waitingToGetOff.computeIfAbsent(p.getInsideElevatorRequest().getDestinationFloor(),
@@ -205,5 +221,4 @@ public class ElevatorController {
       log.info(elevator.toString());
     }
   }
-
 }
