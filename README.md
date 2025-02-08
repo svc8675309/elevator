@@ -1,8 +1,7 @@
 # *Elevator Coding Challenge*
 *  Scott Van Camp
 *  [Apache License 2.0](https://github.com/googleapis/googleapis/blob/master/LICENSE)
-
-## SCAN ( Disk Scheduling Algorithms ) - But for Elevators
+*  ( Disk Scheduling Algorithms ) - But for Elevators
 
 ## Key Concepts
 ### Store requests:
@@ -26,6 +25,9 @@
 2. Efficiently moves from idle to handle the most people waiting. 
 ## Disadvantages
 1. This algorithm is not fair because it causes a long waiting time for passengers that just missed the elevator.
+## Functional TODOs
+* Force elevator to stop on a fire event to let people off. 
+* Allow passengers to selectively pick a different floor.
 ## Considerations for optimization:
 ### Prioritization:
 *  Closest first: While traveling in a direction, prioritize requests closer to the elevator's current position to minimize travel time.
@@ -39,8 +41,6 @@
 * In buildings with multiple elevators, a group control system can coordinate elevator movements to efficiently distribute passenger traffic.
 ### Destination dispatch:
 * Advanced systems can allow passengers to pre-select their destination floor, enabling the elevator to prioritize requests based on the final destination. 
-### Fire and Alarm:
-* Force elevator to stop on a fire event to let people off. 
 
 ## *Build and run*
 ```
