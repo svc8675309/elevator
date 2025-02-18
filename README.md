@@ -5,7 +5,7 @@
 
 ## Key Concepts
 ### Store requests:
-1. The elevator system keeps track of all floor requests, noting whether passengers want to go up or down.
+1. The elevator system keeps track of all floor requests, noting whether passengers wants to go up or down.
 ### Direction selection:
    * Initial direction: When idle, the elevator starts moving in the direction with the most requests.
    * Change direction: Once the elevator reaches the last request in its current direction, it reverses and starts servicing requests in the opposite direction.
@@ -29,8 +29,10 @@
 * Force elevator to stop on a fire event to let people off. 
 * Allow passengers to selectively pick a different floor.
 ## Considerations for optimization:
+### Optimize for ground floor
+* Most people going down are going to ground and most peoople get on from the ground floor. On idle move the elevator to the ground floor. 
 ### Prioritization:
-*  Closest first: While traveling in a direction, prioritize requests closer to the elevator's current position to minimize travel time.
+*  Closest first: While traveling in an up direction, prioritize requests closer to the elevator's current position to minimize travel time.
    ```
    Example: If 10 people were going up to floor 3 and 1 person was going up to
    floor 2, go to floor 3 first then back down to floor 2.
